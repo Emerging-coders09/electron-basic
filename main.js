@@ -6,7 +6,7 @@ const createWindow = ()=>{
         width : 800 ,
         height : 600,
         webPreferences : {
-            preload : path.basename(__dirname , 'preload.js')
+            preload : path.join(__dirname , 'preload.js')
         }
     })
     win.loadFile('index.html')
@@ -14,7 +14,9 @@ const createWindow = ()=>{
     win.on('closed', ()=>{
         win = null
     })
+
 }
+
 
 ipcMain.handle("dark-mode:toggle", ()=>{
     if(nativeTheme.shouldUseDarkColors){
